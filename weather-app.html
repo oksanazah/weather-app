@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Weather app</title>
+    <meta charset="UTF-8" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="src/styles.css" />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="main shadow bg-body rounded">
+        <form class="form-city" id="form-city">
+          <input
+            type="text"
+            class="form-control"
+            id="enter-city"
+            placeholder="Enter a city"
+          />
+          <input type="submit" class="button shadow" value="Search" />
+          <input
+            type="button"
+            class="button shadow"
+            id="current-button"
+            value="Current"
+          />
+        </form>
+        <div class="row">
+          <div class="col-md-auto">
+            <img src="images/clouds.png" />
+          </div>
+          <div class="col-md-auto">
+            <p class="main-temp">
+              <span id="temperature"></span
+              ><span id="celsius"><a href="#"> °C</a></span
+              ><span id="fahrenheit"><a href="#"> | °F</a></span>
+            </p>
+          </div>
+          <div class="col">
+            <p class="secondary-text">Humidity: <span id="humidity"></span>%</p>
+            <p class="secondary-text">Wind: <span id="wind"></span> km/h</p>
+          </div>
+          <div class="col-md-auto">
+            <div class="last-col">
+              <p class="city" id="current-city"></p>
+              <p class="secondary-text" id="current-day"></p>
+              <p class="secondary-text" id="weather"></p>
+            </div>
+          </div>
+        </div>
+        <div class="row weather-days">
+          <div class="col days">
+            <p>Sat</p>
+            <p><img src="images/sun-cloud.png" /></p>
+            <p>23 °</p>
+          </div>
+          <div class="col days">
+            <p>Sun</p>
+            <p><img src="images/sun-cloud.png" /></p>
+            <p>21 °</p>
+          </div>
+          <div class="col days">
+            <p>Mon</p>
+            <p><img src="images/rain.png" /></p>
+            <p>18 °</p>
+          </div>
+          <div class="col days">
+            <p>Tue</p>
+            <p><img src="images/rain.png" /></p>
+            <p>16 °</p>
+          </div>
+          <div class="col days">
+            <p>Wed</p>
+            <p><img src="images/sun-cloud.png" /></p>
+            <p>22 °</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="src/wheather.js"></script>
+  </body>
+</html>
