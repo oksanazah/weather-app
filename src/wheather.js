@@ -7,29 +7,22 @@ function showDate(currentDate) {
   if (currentMinutes < 10) {
     currentMinutes = `0${currentMinutes}`;
   }
-  let days = [
-    'Sunday',
-    'Monday',
-    'Tuesday',
-    'Wednesday',
-    'Thursday',
-    'Friday',
-    'Saturday',
-  ];
+  let days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
   let currentDay = days[currentDate.getDay()];
   return `${currentDay} ${currentHour}:${currentMinutes}`;
 }
 
 function showWeather(response) {
-  document.querySelector('#temperature').innerHTML = Math.round(
-    response.data.main.temp
-  );
+  document.querySelector('#temperature').innerHTML = Math.round(response.data.main.temp);
   document.querySelector('#current-city').innerHTML = response.data.name;
   document.querySelector('#humidity').innerHTML = response.data.main.humidity;
-  document.querySelector('#wind').innerHTML = Math.round(
-    response.data.wind.speed
-  );
+  document.querySelector('#wind').innerHTML = Math.round(response.data.wind.speed);
   document.querySelector('#weather').innerHTML = response.data.weather[0].main;
+  document
+    .querySelector('#image-icon')
+    .setAttribute('src', `images/${response.data.weather[0].icon}.png`);
+
+  celsiusTemp = response.data.main.temp;
 }
 
 function showCity(selectCity) {
@@ -61,25 +54,36 @@ function myLocation(event) {
   navigator.geolocation.getCurrentPosition(searchLocation);
 }
 
+function showTempFahrenheit(event) {
+  event.preventDefault();
+  let currentTemp = document.querySelector('#temperature');
+  celsiusitLink.classList.remove('active');
+  fahrenheitLink.classList.add('active');
+  currentTemp.innerHTML = Math.round((celsiusTemp * 9) / 5 + 32);
+}
+
+function showTempCelsius(event) {
+  event.preventDefault();
+  let currentTemp = document.querySelector('#temperature');
+  celsiusitLink.classList.add('active');
+  fahrenheitLink.classList.remove('active');
+  currentTemp.innerHTML = Math.round(celsiusTemp);
+}
+
 let currentDate = new Date();
 let showDay = document.querySelector('#current-day');
 showDay.innerHTML = showDate(currentDate);
 
-let enterCity = document.querySelector('#form-city');
-enterCity.addEventListener('submit', submitCity);
-
-var currentButton = document.querySelector('#current-button');
+let currentButton = document.querySelector('#current-button');
 currentButton.addEventListener('click', myLocation);
 
+let enterCity = document.querySelector('#form-city');
+enterCity.addEventListener('submit', submitCity);
 showCity('London');
 
-// function showTempFahrenheit() {
-//     let currentTemp = document.querySelector('#temperature');
-//     currentTemp.innerHTML = `${Math.round((response.data.main.temp * 9 / 5) + 32)}`;
-// }
+let celsiusTemp = null;
+let fahrenheitLink = document.querySelector('#fahrenheit');
+let celsiusitLink = document.querySelector('#celsius');
 
-// let celsiusTemp = document.querySelector('#celsius');
-// let fahrenheitTemp = document.querySelector('#fahrenheit');
-
-// celsiusTemp.addEventListener('click', showTempCelsius);
-// fahrenheitTemp.addEventListener('click', showTempFahrenheit);
+celsiusitLink.addEventListener('click', showTempCelsius);
+fahrenheitLink.addEventListener('click', showTempFahrenheit);

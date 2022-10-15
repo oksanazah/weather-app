@@ -17,75 +17,64 @@
     <div class="container">
       <div class="main shadow bg-body rounded">
         <form class="form-city" id="form-city">
-          <input
-            type="text"
-            class="form-control"
-            id="enter-city"
-            placeholder="Enter a city"
-          />
+          <input type="text" class="form-control" id="enter-city" placeholder="Enter a city" />
           <input type="submit" class="button shadow" value="Search" />
-          <input
-            type="button"
-            class="button shadow"
-            id="current-button"
-            value="Current"
-          />
+          <input type="button" class="button shadow" id="current-button" value="My location" />
         </form>
-        <div class="row">
-          <div class="col-md-auto">
-            <img src="images/clouds.png" />
+        <div class="row main-row">
+          <div class="col-3" id="image">
+            <img src="images/03d.png" alt="weather" id="image-icon" />
           </div>
-          <div class="col-md-auto">
-            <p class="main-temp">
+          <div class="col-3">
+            <div class="main-temp">
               <span id="temperature"></span
-              ><span id="celsius"><a href="#"> °C</a></span
-              ><span id="fahrenheit"><a href="#"> | °F</a></span>
-            </p>
+              ><span><a href="#" id="celsius" class="active"> °C</a></span
+              ><span> |<a href="#" id="fahrenheit"> °F</a></span>
+            </div>
           </div>
-          <div class="col">
-            <p class="secondary-text">Humidity: <span id="humidity"></span>%</p>
-            <p class="secondary-text">Wind: <span id="wind"></span> km/h</p>
+          <div class="col-2">
+            <div class="secondary-text">Humidity: <span id="humidity"></span>%</div>
+            <div class="secondary-text">Wind: <span id="wind"></span> km/h</div>
           </div>
-          <div class="col-md-auto">
+          <div class="col-4">
             <div class="last-col">
-              <p class="city" id="current-city"></p>
-              <p class="secondary-text" id="current-day"></p>
-              <p class="secondary-text" id="weather"></p>
+              <div class="city" id="current-city"></div>
+              <div class="secondary-text" id="current-day"></div>
+              <div class="secondary-text" id="weather"></div>
             </div>
           </div>
         </div>
-        <div class="row weather-days">
+        <!-- <div class="row weather-days">
           <div class="col days">
-            <p>Sat</p>
-            <p><img src="images/sun-cloud.png" /></p>
-            <p>23 °</p>
+            <div>Sat</div>
+            <div><img src="images/02d.png" /></div>
+            <div>23 °</div>
           </div>
           <div class="col days">
-            <p>Sun</p>
-            <p><img src="images/sun-cloud.png" /></p>
-            <p>21 °</p>
+            <div>Sun</div>
+            <div><img src="images/02d.png" /></div>
+            <div>21 °</div>
           </div>
           <div class="col days">
-            <p>Mon</p>
-            <p><img src="images/rain.png" /></p>
-            <p>18 °</p>
+            <div>Mon</div>
+            <div><img src="images/09d.png" /></div>
+            <div>18 °</div>
           </div>
           <div class="col days">
-            <p>Tue</p>
-            <p><img src="images/rain.png" /></p>
-            <p>16 °</p>
+            <div>Tue</div>
+            <div><img src="images/09d.png" /></div>
+            <div>16 °</div>
           </div>
           <div class="col days">
-            <p>Wed</p>
-            <p><img src="images/sun-cloud.png" /></p>
-            <p>22 °</p>
+            <div>Wed</div>
+            <div><img src="images/11d.png" /></div>
+            <div>22 °</div>
           </div>
-        </div>
+        </div> -->
       </div>
       <footer class="footer">
-        <a href="https://github.com/oksanazah/weather-app" target="_blank"
-          >Open-source code</a
-        >, by Oksana Zakharchenko
+        <a href="https://github.com/oksanazah/weather-app" target="_blank">Open-source code</a>, by
+        Oksana Zakharchenko
       </footer>
     </div>
     <script src="src/wheather.js"></script>
