@@ -27,7 +27,7 @@ function showForcast(response) {
   let forcastHTML = '';
 
   forcastData.forEach(function (day, index) {
-    if (index < 5) {
+    if (index < 6) {
       forcastHTML += `
     <div class="col days">
       <div>${showWeekDay(day.time)}</div>
@@ -96,21 +96,21 @@ function myLocation(event) {
   navigator.geolocation.getCurrentPosition(searchLocation);
 }
 
-function showTempFahrenheit(event) {
-  event.preventDefault();
-  let currentTemp = document.querySelector('#temperature');
-  celsiusitLink.classList.remove('active');
-  fahrenheitLink.classList.add('active');
-  currentTemp.innerHTML = Math.round((celsiusTemp * 9) / 5 + 32);
-}
+// function showTempFahrenheit(event) {
+//   event.preventDefault();
+//   let currentTemp = document.querySelector('#temperature');
+//   celsiusitLink.classList.remove('active');
+//   fahrenheitLink.classList.add('active');
+//   currentTemp.innerHTML = Math.round((celsiusTemp * 9) / 5 + 32);
+// }
 
-function showTempCelsius(event) {
-  event.preventDefault();
-  let currentTemp = document.querySelector('#temperature');
-  celsiusitLink.classList.add('active');
-  fahrenheitLink.classList.remove('active');
-  currentTemp.innerHTML = Math.round(celsiusTemp);
-}
+// function showTempCelsius(event) {
+//   event.preventDefault();
+//   let currentTemp = document.querySelector('#temperature');
+//   celsiusitLink.classList.add('active');
+//   fahrenheitLink.classList.remove('active');
+//   currentTemp.innerHTML = Math.round(celsiusTemp);
+// }
 
 let currentDate = new Date();
 let showDay = document.querySelector('#current-day');
@@ -122,11 +122,11 @@ currentButton.addEventListener('click', myLocation);
 let enterCity = document.querySelector('#form-city');
 enterCity.addEventListener('submit', submitCity);
 
-let celsiusTemp = null;
-let fahrenheitLink = document.querySelector('#fahrenheit');
-let celsiusitLink = document.querySelector('#celsius');
+// let celsiusTemp = null;
+// let fahrenheitLink = document.querySelector('#fahrenheit');
+// let celsiusitLink = document.querySelector('#celsius');
 
-celsiusitLink.addEventListener('click', showTempCelsius);
-fahrenheitLink.addEventListener('click', showTempFahrenheit);
+// celsiusitLink.addEventListener('click', showTempCelsius);
+// fahrenheitLink.addEventListener('click', showTempFahrenheit);
 
 showCity('London');
