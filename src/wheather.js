@@ -12,6 +12,47 @@ function showDate(currentDate) {
   return `${currentDay} ${currentHour}:${currentMinutes}`;
 }
 
+function showWeekDay(timestamp) {
+  let days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  return days[day];
+}
+
+function showForcast(response) {
+  let forcastData = response.data.daily;
+
+  let forcast = document.getElementById('forcast');
+
+  let forcastHTML = '';
+
+  forcastData.forEach(function (day, index) {
+    if (index < 5) {
+      forcastHTML += `
+    <div class="col days">
+      <div>${showWeekDay(day.time)}</div>
+      <div>
+        <img src="images/${day.condition.icon}.png" />
+      </div>
+      <div>
+        <span>${Math.round(day.temperature.maximum)}°</span>
+        <span id="night"> ${Math.round(day.temperature.minimum)}°</span>
+      </div>
+    </div>
+  `;
+    }
+  });
+
+  forcast.innerHTML = forcastHTML;
+}
+
+function getForcast(city) {
+  let apiKey = 'ff63602b5ab4ddad021a4od399t4f1d1';
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
+
+  axios.get(apiUrl).then(showForcast);
+}
+
 function showWeather(response) {
   document.querySelector('#temperature').innerHTML = Math.round(response.data.main.temp);
   document.querySelector('#current-city').innerHTML = response.data.name;
@@ -23,12 +64,13 @@ function showWeather(response) {
     .setAttribute('src', `images/${response.data.weather[0].icon}.png`);
 
   celsiusTemp = response.data.main.temp;
+
+  getForcast(response.data.name);
 }
 
 function showCity(selectCity) {
   let apiKey = 'a5ab1c192d0abb8931f254cb8480b7bd';
-  let units = 'metric';
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${selectCity}&APPID=${apiKey}&units=${units}`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${selectCity}&APPID=${apiKey}&units=metric`;
 
   axios.get(apiUrl).then(showWeather);
 }
@@ -79,7 +121,6 @@ currentButton.addEventListener('click', myLocation);
 
 let enterCity = document.querySelector('#form-city');
 enterCity.addEventListener('submit', submitCity);
-showCity('London');
 
 let celsiusTemp = null;
 let fahrenheitLink = document.querySelector('#fahrenheit');
@@ -87,3 +128,5 @@ let celsiusitLink = document.querySelector('#celsius');
 
 celsiusitLink.addEventListener('click', showTempCelsius);
 fahrenheitLink.addEventListener('click', showTempFahrenheit);
+
+showCity('London');

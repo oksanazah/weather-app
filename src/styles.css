@@ -1,8 +1,8 @@
 .main {
-  border: 1px solid rgb(226, 225, 225);
+  border: 1px solid #e2e1e1;
   border-radius: 10px;
   max-width: 720px;
-  height: 250px;
+  height: 380px;
   margin: 40px auto;
   padding: 30px;
 }
@@ -61,7 +61,7 @@
 }
 
 img {
-  width: 100px;
+  width: 110px;
 }
 
 #image {
@@ -109,7 +109,7 @@ img {
 }
 
 .weather-days {
-  margin-top: 50px;
+  margin-top: 30px;
 }
 
 .days {
@@ -120,8 +120,12 @@ img {
   padding-bottom: 10px;
 }
 
+#night {
+  color: #b1aeae;
+}
+
 .col img {
-  width: 50px;
+  width: 60px;
 }
 
 .main-temp .active {
